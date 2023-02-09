@@ -8193,15 +8193,15 @@ class BaseCanvasFactory {
     if (width <= 0 || height <= 0) {
       throw new Error("Invalid canvas size");
     }
-    canvasAndContext.canvas.width = width;
-    canvasAndContext.canvas.height = height;
+    //canvasAndContext.canvas.width = width;
+    //canvasAndContext.canvas.height = height;
   }
   destroy(canvasAndContext) {
     if (!canvasAndContext.canvas) {
       throw new Error("Canvas is not specified");
     }
-    canvasAndContext.canvas.width = 0;
-    canvasAndContext.canvas.height = 0;
+    //canvasAndContext.canvas.width = 0;
+    //canvasAndContext.canvas.height = 0;
     canvasAndContext.canvas = null;
     canvasAndContext.context = null;
   }
@@ -12553,8 +12553,8 @@ const fetchData = function (url) {
 };
 class NodeCanvasFactory extends _base_factory.BaseCanvasFactory {
   _createCanvas(width, height) {
-    const Canvas = require("canvas");
-    return Canvas.createCanvas(width, height);
+    const { createCanvas } = require('@napi-rs/canvas')
+    return createCanvas(width, height);
   }
 }
 exports.NodeCanvasFactory = NodeCanvasFactory;
